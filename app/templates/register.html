@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <head>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+    </head>
+    <h1>Register Now</h1>
+    <br>
+    <div class='row'>
+        <div class='col-md-8'>
+            {% import 'bootstrap/wtf.html' as wtf %}
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}

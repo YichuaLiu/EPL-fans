@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+	<head>
+		<br>
+		<h1>Welcome to {{ name }} information center</h1>
+		<br>
+		<meta charset="utf-8">
+		<title>Bootstrap</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<ul id="myTab" class="nav nav-tabs">
+			<li class="active">
+				<a href="#Stadium" data-toggle="tab">
+					<span style="font-size: larger; ">
+						Stadium
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#History" data-toggle="tab">
+					<span style="font-size: larger; ">
+						History
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Coach" data-toggle="tab">
+					<span style="font-size: larger; ">
+						Coach
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#Player" data-toggle="tab">
+					<span style="font-size: larger; ">
+						Player
+					</span>
+				</a>
+			</li>
+			<li class="dropdown">
+				<a href="#" id="myTabDrop1" class="dropdown-toggle"
+		   			data-toggle="dropdown">
+					<span style="font-size: larger; ">
+						Trans <b class="caret"></b>
+					</span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+					<li>
+						<a href="#2018" tabindex="-1" data-toggle="tab">
+							2018
+						</a>
+					</li>
+					<li>
+						<a href="#2017" tabindex="-1" data-toggle="tab">
+							2017
+						</a>
+					</li>
+					<li>
+						<a href="#2016" tabindex="-1" data-toggle="tab">
+							2016
+						</a>
+					</li>
+					<li>
+						<a href="#2015" tabindex="-1" data-toggle="tab">
+							2015
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade in active" id="Stadium">
+				<br>
+				<div class='row'>
+					<div class='col-md-8'>
+						<p style="text-align:justify">
+							<span style="font-size: larger; ">
+								{{ stadium_description }}
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="Coach">
+				<br>
+				<div class='row'>
+					<div class='col-md-10'>
+						<p style="text-align:justify">
+							<span style="font-size: larger; ">
+								{{ manager_description }}
+							</span>
+						</p>
+					</div>
+				</div>
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Nationality</th>
+							<th scope="col">Start</th>
+							<th scope="col">End</th>
+							<th scope="col">Length</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for m in manager_info %}
+								<tr>
+									<th scope="row">{{ m[0] }}</th>
+									<td>{{ m[1] }}</td>
+									<td>{{ m[2] }}</td>
+									<td>{{ m[3] }}</td>
+									<td>{{ m[4] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="Player">
+				<br>
+				<div class='row'>
+					<div class='col-md-8'>
+						<p style="text-align:justify">
+							<span style="font-size: larger; ">
+								{{ player_description }}
+							</span>
+						</p>
+					</div>
+				</div>
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Position</th>
+							<th scope="col">Goals</th>
+							<th scope="col">Wins</th>
+							<th scope="col">Losses</th>
+							<th scope="col">Winning rate</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for p in player_info %}
+								<tr>
+									<th scope="row">{{ p[0] }}</th>
+									<td>{{ p[1] }}</td>
+									<td>{{ p[2] }}</td>
+									<td>{{ p[3] }}</td>
+									<td>{{ p[4] }}</td>
+									<td>{{ p[5] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="History">
+				<br>
+				<div class='row'>
+					<div class='col-md-8'>
+						<p style="text-align:justify">
+							<span style="font-size: larger; ">
+								{{ history_description }}
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="2018">
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Number</th>
+							<th scope="col">State</th>
+							<th scope="col">Times</th>
+							<th scope="col">Cost</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for t_2018 in trans_2018 %}
+								<tr>
+									<th scope="row">{{ t_2018[0] }}</th>
+									<td>{{ t_2018[1] }}</td>
+									<td>{{ t_2018[2] }}</td>
+									<td>{{ t_2018[3] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="2017">
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Number</th>
+							<th scope="col">State</th>
+							<th scope="col">Times</th>
+							<th scope="col">Cost</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for t_2017 in trans_2017 %}
+								<tr>
+									<th scope="row">{{ t_2017[0] }}</th>
+									<td>{{ t_2017[1] }}</td>
+									<td>{{ t_2017[2] }}</td>
+									<td>{{ t_2017[3] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="2016">
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Number</th>
+							<th scope="col">State</th>
+							<th scope="col">Times</th>
+							<th scope="col">Cost</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for t_2016 in trans_2016 %}
+								<tr>
+									<th scope="row">{{ t_2016[0] }}</th>
+									<td>{{ t_2016[1] }}</td>
+									<td>{{ t_2016[2] }}</td>
+									<td>{{ t_2016[3] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="2015">
+				<div class='row'>
+        			<table class="table table-striped">
+						<thead>
+						<tr>
+							<th scope="col">Number</th>
+							<th scope="col">State</th>
+							<th scope="col">Times</th>
+							<th scope="col">Cost</th>
+						</tr>
+						</thead>
+						<tbody>
+							{% for t_2015 in trans_2015 %}
+								<tr>
+									<th scope="row">{{ t_2015[0] }}</th>
+									<td>{{ t_2015[1] }}</td>
+									<td>{{ t_2015[2] }}</td>
+									<td>{{ t_2015[3] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	<script>
+		$(function () {
+			$('#myTab li:eq(0) a').tab('show');
+		});
+	</script>
+
+	</body>
+
+{% endblock %}

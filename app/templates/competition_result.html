@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <h1>
+        <div style="text-align: center;">
+            {{ home_team_name }}(Home) vs {{ away_team_name }}(Away)
+        </div>
+    </h1>
+    <br>
+    <div class='row' style="overflow: scroll">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Season</th>
+                <th scope="col">Half_score</th>
+                <th scope="col">Full_score</th>
+                <th scope="col">Result</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in match_data %}
+                <tr>
+                    <th scope="row">{{ m[0] }}</th>
+                    <td>{{ m[1] }}</td>
+                    <td>{{ m[2] }}</td>
+                    <td>{{ m[3] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class='row'>
+        <div class='col-md-8'>
+            <hr>
+            Compare again?
+            <a href="{{ url_for('competition')}}">
+                Try it now!
+            </a>
+        </div>
+    </div>
+{% endblock %}
